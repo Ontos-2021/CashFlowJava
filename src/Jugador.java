@@ -10,4 +10,10 @@ public class Jugador {
         System.out.println("¡Hola!, soy " + nombre + " y tengo " + edad + " años");
         this.billetera = new Billetera(nombre, saldo);
     }
+
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+        System.out.println("¡Hola!, soy " + nombre);
+        this.billetera = new Billetera(nombre);
+    }
 }

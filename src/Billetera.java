@@ -8,8 +8,10 @@ public class Billetera {
         System.out.println("Se ha creado la billetera de " + this.dueño + " con " + this.saldo);
     }
 
-    public Billetera () {
+    public Billetera(String dueño) {
+        this.dueño = dueño;
         this.saldo = 0;
+        System.out.println("Se ha creado la billetera de " + this.dueño + " con " + this.saldo);
     }
 
     public void vaciarbilletera() {
@@ -18,11 +20,15 @@ public class Billetera {
     }
 
     public void ingresardinero (double monto) {
+
         this.saldo += monto;
+        System.out.println("Se ha ingresado " + monto + " a la billetera de " + this.dueño);
     }
 
     public void retirardinero (double monto) {
-        this.saldo += monto;
+
+        this.saldo -= monto;
+        System.out.println("Se ha retirado " + monto + " a la billetera de " + this.dueño);
     }
 
 

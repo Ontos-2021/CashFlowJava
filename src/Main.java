@@ -1,10 +1,16 @@
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("¡Bienvenidos al juego de CashFlow!");
+        JOptionPane.showMessageDialog(null, "¡Hola! ¡Bienvenido al juego Cash Flow!", "Cash Flow", JOptionPane.PLAIN_MESSAGE);
 
-        Jugador Juan = new Jugador("Juan", 28, 500);
+        String nombre = JOptionPane.showInputDialog("¿Cuál es su nombre?");
 
-        Juan.billetera.vaciarbilletera();
+        int edad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuantos años tienes?"));
+
+        double saldo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto dinero tienes?"));
+
+        Jugador jugador_1 = new Jugador(nombre, edad, saldo);
     }
 }
