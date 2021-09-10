@@ -21,36 +21,34 @@ public class Main {
 
         System.out.println("");
 
-        boolean pregunar_otra_vez = true;
+        boolean preguntar_otra_vez = true;
         int numero_jugada = 1;
 
         do {
             int respuesta = Integer.parseInt(JOptionPane.showInputDialog("Qué quieres hacer?\n1- Ingresar Dinero\n2- Retirar Dinero\n3- Día de pago\nIngrese otro número para salir"));
-            if (respuesta == 1) {
-
-                double monto = Double.parseDouble(JOptionPane.showInputDialog("Cuánto quieres ingresar?"));
-                jugador_1.billetera.ingresardinero(monto);
-
-            } else if (respuesta == 2) {
-
-                double monto = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto quieres retirar?"));
-                jugador_1.billetera.retirardinero(monto);
-
-            } else if (respuesta == 3){
-
-                diadepago dia_de_pago = new diadepago(jugador_1);
-
-            } else {
-
-                pregunar_otra_vez = false;
-                JOptionPane.showMessageDialog(null, "Ha finalizado el juego. ¡Gracias por participar!\nEl programa se cerrará");
-
+            double monto;
+            switch (respuesta){
+                case 1:
+                    monto = Double.parseDouble(JOptionPane.showInputDialog("Cuánto quieres ingresar?"));
+                    jugador_1.billetera.ingresardinero(monto);
+                    break;
+                case 2:
+                    monto = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto quieres retirar?"));
+                    jugador_1.billetera.retirardinero(monto);
+                    break;
+                case 3:
+                    diadepago dia_de_pago = new diadepago(jugador_1);
+                    break;
+                default:
+                    preguntar_otra_vez = false;
+                    JOptionPane.showMessageDialog(null, "Ha finalizado el juego. ¡Gracias por participar!\nEl programa se cerrará");
+                    break;
             }
 
             numero_jugada ++;
             System.out.println("Jugada número: " + numero_jugada);
             System.out.println("");
 
-        } while (pregunar_otra_vez);
+        } while (preguntar_otra_vez);
     }
 }
