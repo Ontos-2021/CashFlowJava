@@ -10,6 +10,6 @@ public class BalanceFinanciero {
         this.ingresos_activos = 0;
         this.salario = salario;
         this.gastos_totales = 0;
-        this.activos = activos;
+        this.activos = new ArrayList<Activo>();
     }
 }
