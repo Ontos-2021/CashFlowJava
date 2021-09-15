@@ -30,11 +30,11 @@ public class Main {
             switch (respuesta){
                 case 1:
                     monto = Double.parseDouble(JOptionPane.showInputDialog("Cuánto quieres ingresar?"));
-                    jugador_1.billetera.ingresardinero(monto);
+                    jugador_1.balance.billetera.ingresardinero(monto);
                     break;
                 case 2:
                     monto = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto quieres retirar?"));
-                    jugador_1.billetera.retirardinero(monto);
+                    jugador_1.balance.billetera.retirardinero(monto);
                     break;
                 case 3:
                     diadepago dia_de_pago = new diadepago(jugador_1);
