@@ -8,7 +8,7 @@ public class Activo {
         this.nombre = nombre;
         this.precio = precio;
         this.ingreso_pasivo = ingreso_pasivo;
-        System.out.println("Se ha creado el activo " + this.nombre + ".");
+        System.out.println("Se ha creado el activo " + this.nombre);
         System.out.println("Precio: " + this.precio);
         System.out.println("Ingreso pasivo: " + this.ingreso_pasivo);
     }

@@ -25,7 +25,7 @@ public class Main {
         int numero_jugada = 1;
 
         do {
-            int respuesta = Integer.parseInt(JOptionPane.showInputDialog("Qué quieres hacer?\n1- Ingresar Dinero\n2- Retirar Dinero\n3- Día de pago\n4- Comprar Activo Financiero\nIngrese otro número para salir"));
+            int respuesta = Integer.parseInt(JOptionPane.showInputDialog("Qué quieres hacer?\n1- Ingresar Dinero\n2- Retirar Dinero\n3- Día de pago\n4- Comprar Activo Financiero\n5- Comprar Pasivo\nIngrese otro número para salir"));
             double monto;
             switch (respuesta){
                 case 1:
@@ -46,6 +46,14 @@ public class Main {
                     Activo activo = new Activo(nombre_activo, precio_activo, ingreso_pasivo);
                     jugador_1.comprar_activo(activo);
                     break;
+                case 5:
+                    String nombre_pasivo = JOptionPane.showInputDialog("¿Qué es lo que quiere comprar?");
+                    double precio_pasivo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto cuesta?"));
+                    double gasto_pasivo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto es el gasto pasivo que genera?"));
+                    Pasivo pasivo = new Pasivo(nombre_pasivo, precio_pasivo, gasto_pasivo);
+                    jugador_1.comprar_pasivo(pasivo);
+                    break;
+
                 default:
                     preguntar_otra_vez = false;
                     JOptionPane.showMessageDialog(null, "Ha finalizado el juego. ¡Gracias por participar!\nEl programa se cerrará");
