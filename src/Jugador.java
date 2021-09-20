@@ -1,20 +1,15 @@
-import java.util.ArrayList;
-
 public class Jugador {
     String nombre;
     int edad;
-    double saldo;
-    double salario;
-    Billetera billetera;
-    double ingresos_pasivos;
+    double saldo_inicial, salario_inicial;
     BalanceFinanciero balance;
 
-    public Jugador(String nombre, int edad, double saldo, double salario) {
+    public Jugador(String nombre, int edad, double saldo_inicial, double salario_inicial) {
         this.nombre = nombre;
         this.edad = edad;
-        this.salario = salario;
-        this.saldo = saldo;
-        this.balance = new BalanceFinanciero(salario, this);
+        this.saldo_inicial = saldo_inicial;
+        this.salario_inicial = salario_inicial;
+        this.balance = new BalanceFinanciero(this);
         System.out.println("¡Hola!, soy " + nombre + " y tengo " + edad + " años");
     }
 
