@@ -13,7 +13,9 @@ public class diadepago {
         System.out.println("¡Día de pago!");
         System.out.println("Has recibido un salario de " + this.salario + " e ingresos pasivos por " + this.ingreso_pasivo);
         System.out.println("Gastos pasivos: " + jugador.balance.gastos_pasivos);
+        System.out.println("Gastos fijos: " + jugador.balance.gastos_fijos);
         jugador.balance.billetera.ingresardinero(this.salario + this.ingreso_pasivo);
         jugador.balance.billetera.retirardinero(this.gastos_pasivos);
+        jugador.balance.billetera.retirardinero(jugador.balance.gastos_fijos);
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class BalanceFinanciero {
     Jugador titular;
-    double ingresos_pasivos, gastos_pasivos, ingresos_activos, salario, gastos_totales;
+    double ingresos_pasivos, gastos_pasivos, ingresos_activos, salario, gastos_fijos;
     ArrayList<Activo> activos;
     ArrayList<Pasivo> pasivos;
     Billetera billetera;
@@ -14,9 +14,9 @@ public class BalanceFinanciero {
         this.gastos_pasivos = 0;
         this.salario = salario;
         this.billetera = new Billetera(this.titular.nombre, titular.saldo);
-        this.gastos_totales = salario/2;
+        this.gastos_fijos = salario/2;
         this.activos = new ArrayList<Activo>();
         this.pasivos = new ArrayList<Pasivo>();
-        System.out.println("Gastos totales: " + this.gastos_totales);
+        System.out.println("Gastos totales: " + this.gastos_fijos);
     }
 }
