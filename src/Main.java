@@ -35,7 +35,8 @@ public class Main {
                     retirar_dinero(jugador_1);
                     break;
                 case 3:
-                    diadepago dia_de_pago = new diadepago(jugador_1);
+                    //diadepago dia_de_pago = new diadepago(jugador_1);
+                    dia_de_pago(jugador_1);
                     break;
                 case 4:
                     comprar_activo(jugador_1);
@@ -81,5 +82,18 @@ public class Main {
         double gasto_pasivo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto es el gasto pasivo que genera?"));
         Pasivo pasivo = new Pasivo(nombre_pasivo, precio_pasivo, gasto_pasivo);
         jugador.comprar_pasivo(pasivo);
+    }
+
+    public static void dia_de_pago(Jugador jugador) {
+        JOptionPane.showMessageDialog(null, "¡Felicitaciones " + jugador.nombre + "! ¡Ha llegado el día de pago!");
+        JOptionPane.showMessageDialog(null, "Salario: " + jugador.balance.salario + "\nIngreso Pasivo: " + jugador.balance.ingresos_pasivos + "\nGastos pasivos: " + jugador.balance.gastos_pasivos + "\nGastos fijos: " + jugador.balance.gastos_fijos + "\nCashflow: " + jugador.balance.cashflow);
+        System.out.println("¡Día de pago!");
+        System.out.println("Salario: " + jugador.balance.salario);
+        System.out.println("Ingresos pasivos: " + jugador.balance.ingresos_pasivos);
+        System.out.println("Gastos pasivos: " + jugador.balance.gastos_pasivos);
+        System.out.println("Gastos fijos: " + jugador.balance.gastos_fijos);
+        System.out.println("Cashflow: " + jugador.balance.cashflow);
+        jugador.balance.billetera.ingresardinero(jugador.balance.salario + jugador.balance.ingresos_pasivos);
+        jugador.balance.billetera.retirardinero(jugador.balance.gastos_pasivos + jugador.balance.gastos_fijos);
     }
 }

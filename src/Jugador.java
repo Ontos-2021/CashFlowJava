@@ -22,13 +22,18 @@ public class Jugador {
         balance.ingresos_pasivos = 0;
         this.balance.activos.forEach(activo_en_lista -> this.balance.ingresos_pasivos += activo_en_lista.ingreso_pasivo);
 
+        this.balance.cashflow += activo.ingreso_pasivo;
         System.out.println("Los ingresos pasivos totales son: " + balance.ingresos_pasivos);
     }
 
     public void comprar_pasivo (Pasivo pasivo) {
         this.balance.pasivos.add(pasivo);
         this.balance.billetera.retirardinero(pasivo.precio);
+
+        // Y en estas líneas se calculan los gastos pasivos sumandole el gasto pasivo del pasivo que se acabo de comprar.
         this.balance.gastos_pasivos += pasivo.gasto_pasivo;
+        this.balance.cashflow -= pasivo.gasto_pasivo;
+
         System.out.println("¡Felicitaciones " + this.nombre +"! Ha comprado el siguiente pasivo: " + pasivo.nombre);
         System.out.println("Sus gastos pasivos son de: " + this.balance.gastos_pasivos);
     }
