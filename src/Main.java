@@ -7,15 +7,7 @@ public class Main {
 
         // Crear jugador
 
-        String nombre = JOptionPane.showInputDialog("¿Cuál es su nombre?");
-
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuantos años tienes?"));
-
-        double saldo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto dinero tienes?"));
-
-        double salario = Double.parseDouble(JOptionPane.showInputDialog("¿Cuál es tu salario?"));
-
-        Jugador jugador_1 = new Jugador(nombre, edad, saldo, salario);
+        Jugador jugador_1 = crear_jugador();
 
         // mainloop
 
@@ -95,5 +87,14 @@ public class Main {
         System.out.println("Cashflow: " + jugador.balance.cashflow);
         jugador.balance.billetera.ingresardinero(jugador.balance.salario + jugador.balance.ingresos_pasivos);
         jugador.balance.billetera.retirardinero(jugador.balance.gastos_pasivos + jugador.balance.gastos_fijos);
+    }
+
+    public static Jugador crear_jugador() {
+        String nombre = JOptionPane.showInputDialog("¿Cuál es su nombre?");
+        int edad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuantos años tienes?"));
+        double saldo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto dinero tienes?"));
+        double salario = Double.parseDouble(JOptionPane.showInputDialog("¿Cuál es tu salario?"));
+        Jugador jugador = new Jugador(nombre, edad, saldo, salario);
+        return jugador;
     }
 }
