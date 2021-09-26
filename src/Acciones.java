@@ -29,8 +29,14 @@ public interface Acciones {
     }
 
     static void dia_de_pago(Jugador jugador) {
-        JOptionPane.showMessageDialog(null, "¡Felicitaciones " + jugador.nombre + "! ¡Ha llegado el día de pago!");
-        JOptionPane.showMessageDialog(null, "Salario: " + jugador.balance.salario + "\nIngreso Pasivo: " + jugador.balance.ingresos_pasivos + "\nGastos pasivos: " + jugador.balance.gastos_pasivos + "\nGastos fijos: " + jugador.balance.gastos_fijos + "\nCashflow: " + jugador.balance.cashflow);
+        String mensaje = "¡Felicitaciones " + jugador.nombre + "! ¡Ha llegado el día de pago!";
+        Mensajes.show(mensaje, "Día de Pago");
+        mensaje = "Salario: " + jugador.balance.salario;
+        mensaje += "\nIngreso Pasivo: " + jugador.balance.ingresos_pasivos;
+        mensaje += "\nGastos pasivos: " + jugador.balance.gastos_pasivos;
+        mensaje += "\nGastos fijos: " + jugador.balance.gastos_fijos;
+        mensaje += "\nCashflow: " + jugador.balance.cashflow;
+        Mensajes.show(mensaje, "Balance mensual");
         System.out.println("¡Día de pago!");
         System.out.println("Salario: " + jugador.balance.salario);
         System.out.println("Ingresos pasivos: " + jugador.balance.ingresos_pasivos);
