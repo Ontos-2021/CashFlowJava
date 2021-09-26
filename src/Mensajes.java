@@ -29,4 +29,15 @@ public interface Mensajes {
     static double input_double(String mensaje, String titulo) {
         return Double.parseDouble(JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE));
     }
+    static boolean input_finalizar(String mensaje, String titulo) {
+        String respuesta = JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE);
+        if (respuesta.equalsIgnoreCase("Sí") || respuesta.equalsIgnoreCase("Si")) {
+            return true;
+        } else if (respuesta.equalsIgnoreCase("No")) {
+            return false;
+        } else {
+            Mensajes.show("Ha ingresado una respuesta inválida. El juego no se finalizará", "Error");
+            return false;
+        }
+    }
 }

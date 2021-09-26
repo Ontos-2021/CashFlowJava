@@ -11,16 +11,22 @@ public class Main {
 
         System.out.println("");
 
-        boolean preguntar_otra_vez;
+        boolean preguntar_otra_vez, finalizar;
         int numero_jugada = 1;
 
         do {
-            preguntar_otra_vez = Acciones.menu(jugador_1, true);
+
+            do {
+                preguntar_otra_vez = Acciones.menu(jugador_1, true);
+            } while (preguntar_otra_vez);
+
             numero_jugada ++;
             System.out.println("Jugada número: " + numero_jugada);
             System.out.println("");
 
-        } while (preguntar_otra_vez);
+            finalizar = Mensajes.input_finalizar("¿Desea finalizar el juego?\nIngrese 'Sí' o 'No'", "Finalizar");
+
+        } while (!finalizar);
 
         Mensajes.finalizar();
     }

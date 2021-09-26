@@ -3,8 +3,8 @@ public interface Acciones {
     // Menú
 
     static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
-        String mensaje = "¿Qué quieres hacer?";
-
+        String mensaje = "¡Es tu turno " + jugador.nombre + "!";
+        mensaje += "\n¿Qué quieres hacer?";
         mensaje += "\n";
         mensaje += "\n1- Ingresar Dinero";
         mensaje += "\n2- Retirar Dinero";
@@ -13,14 +13,17 @@ public interface Acciones {
         mensaje += "\n5- Comprar Pasivo";
         mensaje += "\n";
 
-        mensaje += "\nIngrese otro número para finalizar el juego";
+        mensaje += "\nIngrese otro número para finalizar su turno";
 
         int respuesta = Mensajes.input_int(mensaje, "Menú");
 
         switch (respuesta) {
             case 1 -> ingresar_dinero(jugador);
             case 2 -> retirar_dinero(jugador);
-            case 3 -> dia_de_pago(jugador);
+            case 3 -> {
+                dia_de_pago(jugador);
+                return false;
+            }
             case 4 -> comprar_activo(jugador);
             case 5 -> comprar_pasivo(jugador);
             default -> {
