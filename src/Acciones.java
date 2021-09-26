@@ -1,5 +1,35 @@
 public interface Acciones {
 
+    // Menú
+
+    static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
+        String mensaje = "¿Qué quieres hacer?";
+
+        mensaje += "\n";
+        mensaje += "\n1- Ingresar Dinero";
+        mensaje += "\n2- Retirar Dinero";
+        mensaje += "\n3- Día de pago";
+        mensaje += "\n4- Comprar Activo Financiero";
+        mensaje += "\n5- Comprar Pasivo";
+        mensaje += "\n";
+
+        mensaje += "\nIngrese otro número para finalizar el juego";
+
+        int respuesta = Mensajes.input_int(mensaje, "Menú");
+
+        switch (respuesta) {
+            case 1 -> ingresar_dinero(jugador);
+            case 2 -> retirar_dinero(jugador);
+            case 3 -> dia_de_pago(jugador);
+            case 4 -> comprar_activo(jugador);
+            case 5 -> comprar_pasivo(jugador);
+            default -> {
+                preguntar_otra_vez = false;
+            }
+        }
+        return preguntar_otra_vez;
+    }
+
     static void ingresar_dinero(Jugador jugador) {
         double monto = Mensajes.input_double("¿Cuánto quieres ingresar?", "Ingresar dinero");
         jugador.balance.billetera.ingresardinero(monto);
@@ -18,7 +48,6 @@ public interface Acciones {
 
         Activo activo = new Activo(nombre_activo, precio_activo, ingreso_pasivo);
         jugador.comprar_activo(activo);
-
     }
 
     static void comprar_pasivo(Jugador jugador) {
@@ -56,6 +85,8 @@ public interface Acciones {
         jugador.balance.billetera.retirardinero(jugador.balance.gastos_pasivos + jugador.balance.gastos_fijos);
     }
 
+    // Crear Jugador
+
     static Jugador crear_jugador() {
         String titulo = "Crear jugador";
         String nombre = Mensajes.input_string("¿Cuál es su nombre?", titulo);
@@ -64,33 +95,5 @@ public interface Acciones {
         double saldo = Mensajes.input_double("¿Cuanto dinero tienes en tu billetera?", titulo);
 
         return new Jugador(nombre, edad, saldo, salario);
-    }
-
-    static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
-        String mensaje = "¿Qué quieres hacer?";
-
-        mensaje += "\n";
-        mensaje += "\n1- Ingresar Dinero";
-        mensaje += "\n2- Retirar Dinero";
-        mensaje += "\n3- Día de pago";
-        mensaje += "\n4- Comprar Activo Financiero";
-        mensaje += "\n5- Comprar Pasivo";
-        mensaje += "\n";
-
-        mensaje += "\nIngrese otro número para finalizar el juego";
-
-        int respuesta = Mensajes.input_int(mensaje, "Menú");
-
-        switch (respuesta) {
-            case 1 -> ingresar_dinero(jugador);
-            case 2 -> retirar_dinero(jugador);
-            case 3 -> dia_de_pago(jugador);
-            case 4 -> comprar_activo(jugador);
-            case 5 -> comprar_pasivo(jugador);
-            default -> {
-                preguntar_otra_vez = false;
-            }
-        }
-        return preguntar_otra_vez;
     }
 }
