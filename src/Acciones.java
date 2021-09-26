@@ -60,8 +60,30 @@ public interface Acciones {
         double salario = Mensajes.input_double("¿Cuál es tu salario?");
         double saldo = Mensajes.input_double("¿Cuanto dinero tienes en tu billetera?");
 
-        Jugador jugador = new Jugador(nombre, edad, saldo, salario);
+        return new Jugador(nombre, edad, saldo, salario);
+    }
 
-        return jugador;
+    static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
+        String mensaje = "Qué quieres hacer?\n1- Ingresar Dinero";
+        mensaje += "\n2- Retirar Dinero";
+        mensaje += "\n3- Día de pago";
+        mensaje += "\n4- Comprar Activo Financiero";
+        mensaje += "\n5- Comprar Pasivo";
+        mensaje += "\nIngrese otro número para salir";
+
+        int respuesta = Mensajes.input_int(mensaje);
+
+        switch (respuesta) {
+            case 1 -> Acciones.ingresar_dinero(jugador);
+            case 2 -> Acciones.retirar_dinero(jugador);
+            case 3 -> Acciones.dia_de_pago(jugador);
+            case 4 -> Acciones.comprar_activo(jugador);
+            case 5 -> Acciones.comprar_pasivo(jugador);
+            default -> {
+                preguntar_otra_vez = false;
+                JOptionPane.showMessageDialog(null, "Ha finalizado el juego. ¡Gracias por participar!\nEl programa se cerrará");
+            }
+        }
+        return preguntar_otra_vez;
     }
 }
