@@ -42,10 +42,10 @@ public interface Acciones {
     }
 
     static Jugador crear_jugador() {
-        String nombre = JOptionPane.showInputDialog("¿Cuál es su nombre?");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("¿Cuantos años tienes?"));
-        double saldo = Double.parseDouble(JOptionPane.showInputDialog("¿Cuánto dinero tienes?"));
-        double salario = Double.parseDouble(JOptionPane.showInputDialog("¿Cuál es tu salario?"));
+        String nombre = Mensajes.input_string("¿Cuál es su nombre?");
+        int edad = Mensajes.input_int("¿Cuántos años tienes");
+        double salario = Mensajes.input_double("¿Cuál es tu salario?");
+        double saldo = Mensajes.input_double("¿Cuanto dinero tienes en tu billetera?");
         Jugador jugador = new Jugador(nombre, edad, saldo, salario);
         return jugador;
     }
