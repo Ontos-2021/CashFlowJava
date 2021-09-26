@@ -11,7 +11,7 @@ public class Main {
 
         System.out.println("");
 
-        boolean preguntar_otra_vez = true;
+        boolean preguntar_otra_vez;
         int numero_jugada = 1;
 
         do {
@@ -21,5 +21,7 @@ public class Main {
             System.out.println("");
 
         } while (preguntar_otra_vez);
+
+        Mensajes.finalizar();
     }
 }

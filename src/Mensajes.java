@@ -8,19 +8,25 @@ public interface Mensajes {
         show(mensaje, titulo);
     }
 
+    static void finalizar() {
+        String mensaje = "¡Gracias por participar!\nEl programa se cerrará";
+        String titulo = "¡El juego ha finalizado!";
+        show(mensaje, titulo);
+    }
+
     static void show(String mensaje, String titulo) {
         JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE);
     }
 
-    static String input_string(String mensaje) {
-        return JOptionPane.showInputDialog(mensaje);
+    static String input_string(String mensaje, String titulo) {
+        return JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE);
     }
 
-    static int input_int(String mensaje) {
-        return Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+    static int input_int(String mensaje, String titulo) {
+        return Integer.parseInt(JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE));
     }
 
-    static double input_double(String mensaje) {
-        return Double.parseDouble(JOptionPane.showInputDialog(mensaje));
+    static double input_double(String mensaje, String titulo) {
+        return Double.parseDouble(JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE));
     }
 }
