@@ -67,15 +67,17 @@ public interface Acciones {
     }
 
     static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
-        String mensaje = "Qué quieres hacer?";
+        String mensaje = "¿Qué quieres hacer?";
 
+        mensaje += "\n";
         mensaje += "\n1- Ingresar Dinero";
         mensaje += "\n2- Retirar Dinero";
         mensaje += "\n3- Día de pago";
         mensaje += "\n4- Comprar Activo Financiero";
         mensaje += "\n5- Comprar Pasivo";
+        mensaje += "\n";
 
-        mensaje += "\nIngrese otro número para salir";
+        mensaje += "\nIngrese otro número para finalizar el juego";
 
         int respuesta = Mensajes.input_int(mensaje, "Menú");
 
