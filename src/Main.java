@@ -5,15 +5,9 @@ public class Main {
 
         Mensajes.saludar();
 
-        // Crear jugadores
+        // Crear Jugadores
 
-        int cantidad_jugadores = Mensajes.input_int("¡Ingrese el número de jugadores!", "Creando jugadores");
-
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-
-        for (int i = 0; i < cantidad_jugadores; i++) {
-            jugadores.add(Acciones.crear_jugador(i+1));
-        }
+        ArrayList<Jugador> jugadores = Acciones.crear_jugadores();
 
         // mainloop
 

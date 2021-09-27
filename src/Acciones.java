@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public interface Acciones {
 
     // Menú
@@ -100,6 +102,20 @@ public interface Acciones {
         return new Jugador(nombre, edad, saldo, salario);
     }
 
+    // Crear jugadores
+
+    static ArrayList<Jugador> crear_jugadores() {
+
+        int cantidad_jugadores = Mensajes.input_int("¡Ingrese el número de jugadores!", "Creando jugadores");
+
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+
+        for (int i = 0; i < cantidad_jugadores; i++) {
+            jugadores.add(Acciones.crear_jugador(i+1));
+        }
+        return jugadores;
+    }
+
     // Turno
 
     static void turno(Jugador jugador){
@@ -107,6 +123,6 @@ public interface Acciones {
         do {
             preguntar_otra_vez = Acciones.menu(jugador, true);
         } while (preguntar_otra_vez);
-
+        System.out.println("");
     }
 }
