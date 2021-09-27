@@ -90,13 +90,23 @@ public interface Acciones {
 
     // Crear Jugador
 
-    static Jugador crear_jugador() {
-        String titulo = "Crear jugador";
+    static Jugador crear_jugador(int i) {
+        String titulo = "Creando jugador " + i;
         String nombre = Mensajes.input_string("¿Cuál es su nombre?", titulo);
         int edad = Mensajes.input_int("¿Cuántos años tienes", titulo);
         double salario = Mensajes.input_double("¿Cuál es tu salario?", titulo);
         double saldo = Mensajes.input_double("¿Cuanto dinero tienes en tu billetera?", titulo);
 
         return new Jugador(nombre, edad, saldo, salario);
+    }
+
+    // Turno
+
+    static void turno(Jugador jugador){
+        Boolean preguntar_otra_vez;
+        do {
+            preguntar_otra_vez = Acciones.menu(jugador, true);
+        } while (preguntar_otra_vez);
+
     }
 }

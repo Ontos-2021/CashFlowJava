@@ -1,11 +1,19 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
         Mensajes.saludar();
 
-        // Crear jugador
+        // Crear jugadores
 
-        Jugador jugador_1 = Acciones.crear_jugador();
+        int cantidad_jugadores = Mensajes.input_int("¡Ingrese el número de jugadores!", "Creando jugadores");
+
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+
+        for (int i = 0; i < cantidad_jugadores; i++) {
+            jugadores.add(Acciones.crear_jugador(i+1));
+        }
 
         // mainloop
 
@@ -16,9 +24,7 @@ public class Main {
 
         do {
 
-            do {
-                preguntar_otra_vez = Acciones.menu(jugador_1, true);
-            } while (preguntar_otra_vez);
+            jugadores.forEach(jugador -> Acciones.turno(jugador));
 
             numero_jugada ++;
             System.out.println("Jugada número: " + numero_jugada);
