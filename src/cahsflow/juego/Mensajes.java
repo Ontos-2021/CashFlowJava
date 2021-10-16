@@ -1,3 +1,4 @@
+package cahsflow.juego;
 import javax.swing.*;
 
 public interface Mensajes {
@@ -29,7 +30,7 @@ public interface Mensajes {
     static double input_double(String mensaje, String titulo) {
         return Double.parseDouble(JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE));
     }
-    static boolean input_finalizar(String mensaje, String titulo) {
+    static boolean inputFinalizar(String mensaje, String titulo) {
         String respuesta = JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE);
         if (respuesta.equalsIgnoreCase("Sí") || respuesta.equalsIgnoreCase("Si")) {
             return true;

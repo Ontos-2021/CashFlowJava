@@ -1,10 +1,15 @@
+package cahsflow.juego;
 import java.util.ArrayList;
+
+import cahsflow.modelo.Activo;
+import cahsflow.modelo.Jugador;
+import cahsflow.modelo.Pasivo;
 
 public interface Acciones {
 
     // Menú
 
-    static boolean menu(Jugador jugador, boolean preguntar_otra_vez) {
+    static boolean menu(Jugador jugador) {
         String mensaje = "¡Es tu turno " + jugador.nombre + "!";
         mensaje += "\n¿Qué quieres hacer?";
         mensaje += "\n";
@@ -29,10 +34,10 @@ public interface Acciones {
             case 4 -> comprar_activo(jugador);
             case 5 -> comprar_pasivo(jugador);
             default -> {
-                preguntar_otra_vez = false;
+                return false;
             }
         }
-        return preguntar_otra_vez;
+        return false;
     }
 
     static void ingresar_dinero(Jugador jugador) {
@@ -104,7 +109,7 @@ public interface Acciones {
 
     // Crear jugadores
 
-    static ArrayList<Jugador> crear_jugadores() {
+    static ArrayList<Jugador> crearJugadores() {
 
         int cantidad_jugadores = Mensajes.input_int("¡Ingrese el número de jugadores!", "Creando jugadores");
 
@@ -119,10 +124,10 @@ public interface Acciones {
     // Turno
 
     static void turno(Jugador jugador){
-        Boolean preguntar_otra_vez;
+        Boolean preguntarOtraVez;
         do {
-            preguntar_otra_vez = Acciones.menu(jugador, true);
-        } while (preguntar_otra_vez);
+            preguntarOtraVez = Acciones.menu(jugador);
+        } while (preguntarOtraVez);
         System.out.println("");
     }
 }
