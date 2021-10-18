@@ -5,8 +5,8 @@ public class Jugador {
     private Integer edad;
     private Double saldoInicial;
     private Double salarioInicial;
-    private BalanceFinanciero balance;
-    private Billetera billetera;
+    public BalanceFinanciero balance;
+    public Billetera billetera;
 
 
     public Jugador(String nombre, Integer edad, Double saldoInicial, Double salarioInicial) {
@@ -15,6 +15,7 @@ public class Jugador {
         this.saldoInicial = saldoInicial;
         this.salarioInicial = salarioInicial;
         this.balance = new BalanceFinanciero(salarioInicial);
+        this.billetera = new Billetera(saldoInicial);
         mostrar();
     }
 
@@ -25,26 +26,23 @@ public class Jugador {
     public void comprar_activo(Activo activo) {
         this.balance.addActivo(activo);
         System.out.println("¡Felicitaciones " + this.nombre +"! Se ha agregado el siguiente activo a su portafolio: " + activo.getNombre());
-        this.balance.billetera.retirar(activo.getPrecio());
+        this.billetera.retirar(activo.getPrecio());
 
         // En estas líneas de calcula los ingresos pasivos iterando todos los activos.
-        balance.ingresos_pasivos = 0;
-        this.balance.activos.forEach(activo_en_lista -> this.balance.ingresos_pasivos += activo_en_lista.getIngresoPasivo());
+        balance.setIngresosPasivos(balance.getIngresosPasivos() + activo.getIngresoPasivo());
 
-        this.balance.cashflow += activo.getIngresoPasivo();
-        System.out.println("Los ingresos pasivos totales son: " + balance.ingresos_pasivos);
+        System.out.println("Los ingresos pasivos totales son: " + balance.getIngresosPasivos());
     }
 
     public void comprar_pasivo (Pasivo pasivo) {
         this.balance.addPasivo(pasivo);
-        this.balance.billetera.retirar(pasivo.getPrecio());
+        this.billetera.retirar(pasivo.getPrecio());
 
         // Y en estas líneas se calculan los gastos pasivos sumandole el gasto pasivo del pasivo que se acabo de comprar.
-        this.balance.gastos_pasivos += pasivo.getGastoPasivo();
-        this.balance.cashflow -= pasivo.getGastoPasivo();
+        this.balance.setGastosPasivos(balance.getGastosPasivos() + pasivo.getGastoPasivo());
 
         System.out.println("¡Felicitaciones " + this.nombre +"! Ha comprado el siguiente pasivo: " + pasivo.getNombre());
-        System.out.println("Sus gastos pasivos son de: " + this.balance.gastos_pasivos);
+        System.out.println("Sus gastos pasivos son de: " + this.balance.getGastosPasivos());
     }
 
 	public String getNombre() {

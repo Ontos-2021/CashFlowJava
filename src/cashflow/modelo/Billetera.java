@@ -28,4 +28,12 @@ public class Billetera {
     public void mostrarsaldo() {
         System.out.println("El saldo de la billetera es: " + this.saldo);
     }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 }

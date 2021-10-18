@@ -10,7 +10,7 @@ public interface Acciones {
     // Menú
 
     static boolean menu(Jugador jugador) {
-        String mensaje = "¡Es tu turno " + jugador.nombre + "!";
+        String mensaje = "¡Es tu turno " + jugador.getNombre() + "!";
         mensaje += "\n¿Qué quieres hacer?";
         mensaje += "\n";
         mensaje += "\n1- Ingresar Dinero";
@@ -42,12 +42,12 @@ public interface Acciones {
 
     static void ingresar_dinero(Jugador jugador) {
         double monto = Mensajes.input_double("¿Cuánto quieres ingresar?", "Ingresar dinero");
-        jugador.balance.billetera.ingresardinero(monto);
+        jugador.billetera.setSaldo(monto);
     }
 
     static void retirar_dinero(Jugador jugador) {
         double monto = Mensajes.input_double("¿Cuánto quieres retirar?", "Retirar dinero");
-        jugador.balance.billetera.retirardinero(monto);
+        jugador.billetera.setSaldo(monto);
     }
 
     static void comprar_activo(Jugador jugador) {
@@ -72,27 +72,29 @@ public interface Acciones {
     }
 
     static void dia_de_pago(Jugador jugador) {
-        String mensaje = "¡Felicitaciones " + jugador.nombre + "! ¡Ha llegado el día de pago!";
+        String mensaje = "¡Felicitaciones " + jugador.getNombre() + "! ¡Ha llegado el día de pago!";
         String titulo = "¡Día de Pago!";
         Mensajes.show(mensaje, titulo);
 
-        mensaje = "Salario: " + jugador.balance.salario;
-        mensaje += "\nIngreso Pasivo: " + jugador.balance.ingresos_pasivos;
-        mensaje += "\nGastos pasivos: " + jugador.balance.gastos_pasivos;
-        mensaje += "\nGastos fijos: " + jugador.balance.gastos_fijos;
-        mensaje += "\nCashflow: " + jugador.balance.cashflow;
-        titulo = "Balance mensual: " + jugador.nombre;
+        mensaje = "Salario: " + jugador.balance.getSalario();
+        mensaje += "\nIngreso Pasivo: " + jugador.balance.getIngresosPasivos();
+        mensaje += "\nGastos pasivos: " + jugador.balance.getGastosPasivos();
+        mensaje += "\nGastos fijos: " + jugador.balance.getGastosFijos();
+        mensaje += "\nCashflow: " + jugador.balance.getCashflow();
+        titulo = "Balance mensual: " + jugador.getNombre();
         Mensajes.show(mensaje, titulo);
 
         System.out.println("¡Día de pago!");
-        System.out.println("Salario: " + jugador.balance.salario);
-        System.out.println("Ingresos pasivos: " + jugador.balance.ingresos_pasivos);
-        System.out.println("Gastos pasivos: " + jugador.balance.gastos_pasivos);
-        System.out.println("Gastos fijos: " + jugador.balance.gastos_fijos);
-        System.out.println("Cashflow: " + jugador.balance.cashflow);
+        System.out.println("Salario: " + jugador.balance.getSalario());
+        System.out.println("Ingresos pasivos: " + jugador.balance.getIngresosPasivos());
+        System.out.println("Gastos pasivos: " + jugador.balance.getGastosPasivos());
+        System.out.println("Gastos fijos: " + jugador.balance.getGastosFijos());
+        System.out.println("Cashflow: " + jugador.balance.getCashflow());
 
-        jugador.balance.billetera.ingresardinero(jugador.balance.salario + jugador.balance.ingresos_pasivos);
-        jugador.balance.billetera.retirardinero(jugador.balance.gastos_pasivos + jugador.balance.gastos_fijos);
+        // Ingresar Dinero
+        jugador.billetera.setSaldo(jugador.billetera.getSaldo() + jugador.balance.getSalario() + jugador.balance.getIngresosPasivos());
+        // Retirar Dinero
+        jugador.billetera.setSaldo(jugador.billetera.getSaldo() - jugador.balance.getGastosPasivos() - jugador.balance.getGastosFijos());
     }
 
     // Crear Jugador
