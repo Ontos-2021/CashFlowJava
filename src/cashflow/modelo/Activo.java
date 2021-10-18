@@ -1,4 +1,4 @@
-package cahsflow.modelo;
+package cashflow.modelo;
 public class Activo {
 
     private String nombre;

@@ -1,9 +1,9 @@
-package cahsflow;
+package cashflow;
 import java.util.ArrayList;
 
-import cahsflow.juego.Acciones;
-import cahsflow.juego.Mensajes;
-import cahsflow.modelo.Jugador;
+import cashflow.juego.Acciones;
+import cashflow.juego.Mensajes;
+import cashflow.modelo.Jugador;
 
 public class Main {
     public static void main(String[] args) {

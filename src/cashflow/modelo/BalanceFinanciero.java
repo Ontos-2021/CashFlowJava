@@ -1,4 +1,4 @@
-package cahsflow.modelo;
+package cashflow.modelo;
 import java.util.ArrayList;
 import java.util.List;
 

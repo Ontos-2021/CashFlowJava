@@ -1,4 +1,4 @@
-package cahsflow.juego;
+package cashflow.juego;
 import javax.swing.*;
 
 public interface Mensajes {

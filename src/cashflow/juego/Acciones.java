@@ -1,9 +1,9 @@
-package cahsflow.juego;
+package cashflow.juego;
 import java.util.ArrayList;
 
-import cahsflow.modelo.Activo;
-import cahsflow.modelo.Jugador;
-import cahsflow.modelo.Pasivo;
+import cashflow.modelo.Activo;
+import cashflow.modelo.Jugador;
+import cashflow.modelo.Pasivo;
 
 public interface Acciones {
 
