@@ -9,8 +9,8 @@ public class Jugador {
         this.edad = edad;
         this.saldo_inicial = saldo_inicial;
         this.salario_inicial = salario_inicial;
-        this.balance = new BalanceFinanciero(this);
         System.out.println("¡Hola!, soy " + nombre + " y tengo " + edad + " años");
+        this.balance = new BalanceFinanciero(this);
     }
 
     public void comprar_activo(Activo activo) {

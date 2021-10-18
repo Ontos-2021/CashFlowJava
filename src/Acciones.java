@@ -95,7 +95,7 @@ public interface Acciones {
     static Jugador crear_jugador(int i) {
         String titulo = "Creando jugador " + i;
         String nombre = Mensajes.input_string("¿Cuál es su nombre?", titulo);
-        int edad = Mensajes.input_int("¿Cuántos años tienes", titulo);
+        int edad = Mensajes.input_int("¿Cuántos años tienes?", titulo);
         double salario = Mensajes.input_double("¿Cuál es tu salario?", titulo);
         double saldo = Mensajes.input_double("¿Cuanto dinero tienes en tu billetera?", titulo);
 
