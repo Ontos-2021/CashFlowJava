@@ -42,12 +42,12 @@ public interface Acciones {
 
     static void ingresar_dinero(Jugador jugador) {
         double monto = Mensajes.input_double("¿Cuánto quieres ingresar?", "Ingresar dinero");
-        jugador.billetera.setSaldo(monto);
+        jugador.billetera.ingresar(monto);
     }
 
     static void retirar_dinero(Jugador jugador) {
         double monto = Mensajes.input_double("¿Cuánto quieres retirar?", "Retirar dinero");
-        jugador.billetera.setSaldo(monto);
+        jugador.billetera.retirar(monto);
     }
 
     static void comprar_activo(Jugador jugador) {
@@ -92,9 +92,9 @@ public interface Acciones {
         System.out.println("Cashflow: " + jugador.balance.getCashflow());
 
         // Ingresar Dinero
-        jugador.billetera.setSaldo(jugador.billetera.getSaldo() + jugador.balance.getSalario() + jugador.balance.getIngresosPasivos());
+        jugador.billetera.ingresar(jugador.balance.getSalario() + jugador.balance.getIngresosPasivos());
         // Retirar Dinero
-        jugador.billetera.setSaldo(jugador.billetera.getSaldo() - jugador.balance.getGastosPasivos() - jugador.balance.getGastosFijos());
+        jugador.billetera.retirar(jugador.balance.getGastosPasivos() + jugador.balance.getGastosFijos());
     }
 
     // Crear Jugador

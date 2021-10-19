@@ -28,8 +28,9 @@ public class Jugador {
         System.out.println("¡Felicitaciones " + this.nombre +"! Se ha agregado el siguiente activo a su portafolio: " + activo.getNombre());
         this.billetera.retirar(activo.getPrecio());
 
-        // En estas líneas de calcula los ingresos pasivos iterando todos los activos.
+        // En estas líneas se calcula los ingresos pasivos.
         balance.setIngresosPasivos(balance.getIngresosPasivos() + activo.getIngresoPasivo());
+        balance.setCashflow();
 
         System.out.println("Los ingresos pasivos totales son: " + balance.getIngresosPasivos());
     }
@@ -40,6 +41,7 @@ public class Jugador {
 
         // Y en estas líneas se calculan los gastos pasivos sumandole el gasto pasivo del pasivo que se acabo de comprar.
         this.balance.setGastosPasivos(balance.getGastosPasivos() + pasivo.getGastoPasivo());
+        balance.setCashflow();
 
         System.out.println("¡Felicitaciones " + this.nombre +"! Ha comprado el siguiente pasivo: " + pasivo.getNombre());
         System.out.println("Sus gastos pasivos son de: " + this.balance.getGastosPasivos());

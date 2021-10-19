@@ -58,8 +58,8 @@ public class BalanceFinanciero {
 		return cashflow;
 	}
 
-	public void setCashflow(Double cashflow) {
-		this.cashflow = cashflow;
+	public void setCashflow() {
+		this.cashflow = getIngresosPasivos() + getSalario() - getGastosPasivos() - getGastosFijos();
 	}
 
 	public List<Activo> getActivos() {
